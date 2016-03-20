@@ -44,14 +44,18 @@ var Ingest = React.createClass({
 
   render(){
     return(
-      <div>
-        <h2>What did you consume?</h2>
-        <ul className='consumables'>
+      <div className='panel panel-default'>
+        <div className='panel-heading'>
+          <h3 className='panel-title'>What did you consume?</h3>
+        </div>
+        <ul className='list-group consumables'>
           {this.state.consumables.map(function(consumable) {
             return <Consumable key={consumable.id} consumable={consumable} onSelected={this.ingest}/>;
           }.bind(this))}
         </ul>
-        <NewConsumable onNewConsumable={this.consumableAdded}/>
+        <div className='panel-body'>
+          <NewConsumable onNewConsumable={this.consumableAdded}/>
+        </div>
       </div>
     )
   }

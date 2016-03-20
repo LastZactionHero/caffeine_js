@@ -10,6 +10,7 @@ var MgInBody = React.createClass({
     return(
       <div className='jumbotron text-center'>
         <h1 className=''>{this.props.mg}mg</h1>
+        <p>caffeine in your body</p>
       </div>
     )
   }

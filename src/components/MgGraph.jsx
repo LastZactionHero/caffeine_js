@@ -5,11 +5,13 @@ var MgGraph = React.createClass({
   getInitialState: function(){
     return {
       chartOptions: {
-        responsive: true
+        responsive: true,
+        maintainAspectRatio: false,
+        tooltipTemplate: ''
       }
     }
   },
-  
+
   render(){
     var chart = null;
     if(this.props.data){

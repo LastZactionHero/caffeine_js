@@ -55,16 +55,18 @@ var AppComponent = React.createClass({
           mgOverTime: {
             labels: _.map(results, function(result){
               var date = new Date(result.time)
-              return date.getMonth() +
-                '/' + date.getDate() +
-                ' ' + date.getHours() + ':' + date.getMinutes();
+
+              var hours = date.getHours();
+              if(hours < 10) hours = '0' + hours;
+              var minutes = date.getMinutes();
+              if(minutes < 10) minutes = '0' + minutes;
+              return hours + ':' + minutes;
             }),
             datasets: [
               {
-                label: 'My First dataset',
                 fillColor: 'rgba(220,220,220,0.2)',
-                strokeColor: 'rgba(220,220,220,1)',
-                pointColor: 'rgba(220,220,220,1)',
+                strokeColor: 'rgba(51,122,183,1)',
+                pointColor: 'rgba(51,122,183,1)',
                 pointStrokeColor: '#fff',
                 pointHighlightFill: '#fff',
                 pointHighlightStroke: 'rgba(220,220,220,1)',

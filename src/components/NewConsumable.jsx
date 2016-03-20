@@ -38,7 +38,6 @@ var NewConsumable = React.createClass({
   render() {
     return(
       <div>
-        <h3>New Consumable</h3>
         <form onSubmit={this.handleSubmit}>
           <div className='form-group'>
             <label>Name</label>
@@ -58,7 +57,7 @@ var NewConsumable = React.createClass({
               value={this.state.amount}
               onChange={this.handleAmountChange} />
           </div>
-          <button type='submit' className='btn btn-default'>Add</button>
+          <button type='submit' className='btn btn-primary'>Add New Consumable</button>
         </form>
       </div>
     );

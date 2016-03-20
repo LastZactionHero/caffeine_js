@@ -7,13 +7,18 @@ var Consumable = React.createClass({
 
   render() {
     return(
-      <li>
-        <div className="row" onClick={this.handleClick}>
-          <div className="col-md-8">
+      <li className='list-group-item'>
+        <div className="row">
+          <div className="col-xs-4">
             {this.props.consumable.name}
           </div>
-          <div className="col-md-4">
+          <div className="col-xs-3">
             {this.props.consumable.amount}
+          </div>
+          <div className='col-xs-5 text-right'>
+            <a href='javascript:void(0)' onClick={this.handleClick} className='btn btn-primary'>
+              +
+            </a>
           </div>
         </div>
       </li>
