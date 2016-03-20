@@ -26,7 +26,7 @@ let config = Object.assign({}, baseConfig, {
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
-      API_HOST: JSON.stringify('http://localhost:8181')
+      API_HOST: JSON.stringify('http://caffeineapi.develop.vodka')
     })
   ],
   module: defaultSettings.getDefaultModules()
