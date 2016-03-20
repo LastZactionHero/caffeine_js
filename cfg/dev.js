@@ -21,6 +21,9 @@ let config = Object.assign({}, baseConfig, {
     new webpack.NoErrorsPlugin(),
     new BowerWebpackPlugin({
       searchResolveModulesDirectories: false
+    }),
+    new webpack.DefinePlugin({
+      API_HOST: JSON.stringify('http://localhost:8181')
     })
   ],
   module: defaultSettings.getDefaultModules()

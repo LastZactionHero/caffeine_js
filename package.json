@@ -72,6 +72,7 @@
     "normalize.css": "^3.0.3",
     "react": "^0.14.0",
     "react-chartjs": "^0.7.3",
-    "react-dom": "^0.14.0"
+    "react-dom": "^0.14.0",
+    "underscore": "^1.8.3"
   }
 }

@@ -1,6 +1,5 @@
-var React = require('react');
-
-import $ from "jquery";
+import React from 'react';
+import $ from 'jquery';
 
 var MgInBody = React.createClass({
   getInitialState: function(){
@@ -11,10 +10,8 @@ var MgInBody = React.createClass({
 
   componentDidMount: function(){
     this.serverRequest = $.get(
-      // TODO: Server domain in config
-      "http://localhost:8181/status/now",
+      API_HOST + '/status/now',
       function(result){
-        console.log(result.mg_in_body)
         this.setState({
           mg: Math.floor(result.mg_in_body)
         });

@@ -24,7 +24,10 @@ let config = Object.assign({}, baseConfig, {
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      API_HOST: JSON.stringify('http://localhost:8181')
+    })
   ],
   module: defaultSettings.getDefaultModules()
 });
