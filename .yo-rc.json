@@ -1,0 +1,7 @@
+{
+  "generator-react-webpack": {
+    "appName": "caffeine",
+    "style": "scss",
+    "postcss": true
+  }
+}
