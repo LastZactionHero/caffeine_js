@@ -16,11 +16,14 @@
 - List of Energy Levels
 
 
-## Components
+## Components Todo
 
-- Caffeine in Body
 - Caffeine/Time Graph
 - Graph Scale Selector
 - Graph Time Scale
 - Selection List
 - New Consumable Form
+
+## Components Done
+
+- Caffeine in Body

@@ -1,5 +1,6 @@
 require('normalize.css');
 require('styles/App.css');
+require('../../node_modules/bootstrap/dist/css/bootstrap.min.css')
 
 import React from 'react';
 
