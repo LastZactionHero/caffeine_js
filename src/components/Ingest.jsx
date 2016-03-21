@@ -52,7 +52,7 @@ var Ingest = React.createClass({
         <div className='panel-heading'>
           <div className='row'>
           <div className='col-xs-8'>
-            <h3 className='panel-title'>What did you consume?</h3>
+            <h3 className='panel-title'>What did you drink?</h3>
           </div>
           <div className='col-xs-4 text-right'>
             <a className='btn btn-danger' onClick={this.cancelIngest}>Cancel</a>

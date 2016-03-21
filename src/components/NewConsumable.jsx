@@ -57,7 +57,7 @@ var NewConsumable = React.createClass({
               value={this.state.amount}
               onChange={this.handleAmountChange} />
           </div>
-          <button type='submit' className='btn btn-primary'>Add New Consumable</button>
+          <button type='submit' className='btn btn-primary'>Add</button>
         </form>
       </div>
     );

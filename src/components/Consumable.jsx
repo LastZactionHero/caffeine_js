@@ -9,11 +9,9 @@ var Consumable = React.createClass({
     return(
       <li className='list-group-item'>
         <div className="row">
-          <div className="col-xs-4">
-            {this.props.consumable.name}
-          </div>
-          <div className="col-xs-3">
-            {this.props.consumable.amount}
+          <div className="col-xs-7">
+            {this.props.consumable.name}&nbsp;&nbsp;
+            <span className='detail'>({this.props.consumable.amount}mg)</span>
           </div>
           <div className='col-xs-5 text-right'>
             <a href='javascript:void(0)' onClick={this.handleClick} className='btn btn-primary'>
