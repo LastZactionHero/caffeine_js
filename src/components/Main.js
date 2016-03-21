@@ -8,7 +8,6 @@ import MgInBody from './MgInBody';
 import MgGraph from './MgGraph';
 import Ingest from './Ingest';
 import $ from 'jquery';
-import _ from 'underscore';
 
 var AppComponent = React.createClass({
   getInitialState: function(){
@@ -19,6 +18,14 @@ var AppComponent = React.createClass({
   },
 
   componentDidMount: function(){
+    this.fetchAll();
+  },
+
+  handleIngest: function(){
+    this.fetchAll();
+  },
+
+  fetchAll: function(){
     this.fetchMgOverTime();
     this.fetchMgInBody();
   },
@@ -27,21 +34,19 @@ var AppComponent = React.createClass({
     this.serverRequest = $.get(
       API_HOST + '/status/now',
       function(result){
-        this.setState({
-          mgInBody: Math.floor(result.mg_in_body)
-        });
+        this.setState({mgInBody: Math.floor(result.mg_in_body)});
       }.bind(this)
     );
   },
 
   fetchMgOverTime: function(){
-    var startDate = new Date();
-    startDate.setDate(startDate.getDate() - 0.5);
-
-    var endDate = new Date();
-    endDate.setDate(endDate.getDate() + 0.5);
-
+    var dateRange = 0.5;
     var interval = 1;
+
+    var startDate = new Date();
+    startDate.setDate(startDate.getDate() - dateRange);
+    var endDate = new Date();
+    endDate.setDate(endDate.getDate() + dateRange);
 
     var queryStr =
       '?start_time=' + encodeURIComponent(startDate.toJSON()) +
@@ -51,37 +56,9 @@ var AppComponent = React.createClass({
     this.serverRequest = $.get(
       API_HOST + '/status/time' + queryStr,
       function(results){
-        this.setState({
-          mgOverTime: {
-            labels: _.map(results, function(result){
-              var date = new Date(result.time)
-
-              var hours = date.getHours();
-              if(hours < 10) hours = '0' + hours;
-              var minutes = date.getMinutes();
-              if(minutes < 10) minutes = '0' + minutes;
-              return hours + ':' + minutes;
-            }),
-            datasets: [
-              {
-                fillColor: 'rgba(220,220,220,0.2)',
-                strokeColor: 'rgba(51,122,183,1)',
-                pointColor: 'rgba(51,122,183,1)',
-                pointStrokeColor: '#fff',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: 'rgba(220,220,220,1)',
-                data: _.map(results, function(result){return result.mg})
-              }
-            ]
-          }
-        });
+        this.setState({mgOverTime: results});
       }.bind(this)
     );
-  },
-
-  handleIngest: function(){
-    this.fetchMgOverTime();
-    this.fetchMgInBody();
   },
 
   render() {
