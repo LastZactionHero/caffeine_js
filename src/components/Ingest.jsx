@@ -42,11 +42,22 @@ var Ingest = React.createClass({
     });
   },
 
+  cancelIngest: function(){
+    this.props.onCancel();
+  },
+
   render(){
     return(
-      <div className='panel panel-default'>
+      <div className='panel panel-default ingest'>
         <div className='panel-heading'>
-          <h3 className='panel-title'>What did you consume?</h3>
+          <div className='row'>
+          <div className='col-xs-8'>
+            <h3 className='panel-title'>What did you consume?</h3>
+          </div>
+          <div className='col-xs-4 text-right'>
+            <a className='btn btn-danger' onClick={this.cancelIngest}>Cancel</a>
+          </div>
+          </div>
         </div>
         <ul className='list-group consumables'>
           {this.state.consumables.map(function(consumable) {

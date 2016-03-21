@@ -12,8 +12,9 @@ import $ from 'jquery';
 var AppComponent = React.createClass({
   getInitialState: function(){
     return {
+      view: 'status',
       mgOverTime: null,
-      mgInBody: null
+      mgInBody: null,
     }
   },
 
@@ -23,9 +24,11 @@ var AppComponent = React.createClass({
 
   handleIngest: function(){
     this.fetchAll();
+    this.showStatus();
   },
 
   fetchAll: function(){
+    this.setState({mgOverTime: null});
     this.fetchMgOverTime();
     this.fetchMgInBody();
   },
@@ -61,13 +64,32 @@ var AppComponent = React.createClass({
     );
   },
 
+  showIngest: function(){
+    this.setState({view: 'ingest'});
+  },
+
+  showStatus: function(){
+    this.fetchAll();
+    this.setState({view: 'status'});
+  },
+
   render() {
+    var visibleComponents = null;
+    if(this.state.view == 'status'){
+      visibleComponents = <div>
+          <a
+            href='javascript:void(0)'
+            onClick={this.showIngest}
+            className='btn btn-primary btn-add'>+</a>
+          <MgInBody mg={this.state.mgInBody} />
+          <MgGraph data={this.state.mgOverTime} />
+        </div>;
+    } else if(this.state.view == 'ingest') {
+      visibleComponents = <Ingest onCancel={this.showStatus} onIngest={this.handleIngest}/>;
+    }
     return (
       <div className='index'>
-        <MgInBody mg={this.state.mgInBody} />
-        <MgGraph data={this.state.mgOverTime} />
-        <hr/>
-        <Ingest onIngest={this.handleIngest}/>
+        {visibleComponents}
       </div>
     );
   }
