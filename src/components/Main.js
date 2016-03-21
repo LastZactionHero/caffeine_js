@@ -89,6 +89,7 @@ var AppComponent = React.createClass({
       <div className='index'>
         <MgInBody mg={this.state.mgInBody} />
         <MgGraph data={this.state.mgOverTime} />
+        <hr/>
         <Ingest onIngest={this.handleIngest}/>
       </div>
     );

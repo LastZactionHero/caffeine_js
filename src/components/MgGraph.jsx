@@ -7,7 +7,7 @@ var MgGraph = React.createClass({
       chartOptions: {
         responsive: true,
         maintainAspectRatio: false,
-        tooltipTemplate: ''
+        tooltipTemplate: "<%= Math.round(value) + 'mg' %>"
       }
     }
   },
